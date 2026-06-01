@@ -1,0 +1,103 @@
+/* ==========================================================================
+   Cinematic motion & scroll reveals
+   ========================================================================== */
+
+.reveal-up,
+.reveal-left,
+.reveal-right {
+  opacity: 0;
+  transition: opacity 1.1s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 1.1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-up {
+  transform: translateY(36px);
+}
+
+.reveal-left {
+  transform: translateX(-36px);
+}
+
+.reveal-right {
+  transform: translateX(36px);
+}
+
+.reveal-up.is-visible,
+.reveal-left.is-visible,
+.reveal-right.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+.reveal-up[data-delay="100"],
+.reveal-left[data-delay="100"],
+.reveal-right[data-delay="100"] {
+  transition-delay: 0.12s;
+}
+
+.reveal-up[data-delay="200"],
+.reveal-left[data-delay="200"],
+.reveal-right[data-delay="200"] {
+  transition-delay: 0.24s;
+}
+
+.reveal-up[data-delay="300"],
+.reveal-left[data-delay="300"],
+.reveal-right[data-delay="300"] {
+  transition-delay: 0.36s;
+}
+
+/* Section cinematic entrance */
+.section-about,
+.section-services,
+.section-why,
+.section-properties,
+.section-contact {
+  opacity: 1;
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up,
+  .reveal-left,
+  .reveal-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .hero-line--name,
+  .hero-line--tagline,
+  .hero-line--services {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .hero-scroll-indicator__line {
+    animation: none;
+  }
+
+  .hero-background {
+    transform: none !important;
+  }
+
+  .section-bg {
+    opacity: 1 !important;
+    transition: none;
+  }
+
+  .property-card:hover .property-card__image {
+    opacity: 0.92;
+  }
+
+  .service-card:hover,
+  .property-card:hover {
+    transform: none;
+  }
+
+  .property-card__view {
+    opacity: 1;
+    transform: none;
+  }
+}
